@@ -14,13 +14,13 @@ public class SortingManager {
     	List<GardenTools> sortedListOfGardenTools;
     	if(order == OrderOfSOrting.DESCENDING) {
     	    sortedListOfGardenTools = listOfTools.stream()
-    		    .sorted(Comparator.comparing(GardenTools::getCostInUaPerOne))
+    		    .sorted(Comparator.comparing(GardenTools::getCostInUaPerOne).reversed())
     		    .collect(Collectors.toList());
     	}
     	
     	else {
     	    sortedListOfGardenTools = listOfTools.stream()
-    		    .sorted(Comparator.comparing(GardenTools::getCostInUaPerOne).reversed())
+    		    .sorted(Comparator.comparing(GardenTools::getCostInUaPerOne))
     		    .collect(Collectors.toList());
     	}
     	
@@ -32,13 +32,13 @@ public class SortingManager {
     	List<GardenTools> sortedListOfGardenTools;
     	if(order == OrderOfSOrting.DESCENDING) {
     	   sortedListOfGardenTools = listOfTools.stream()
-    		   .sorted(Comparator.comparing(GardenTools::getWeightInKg))
+    		   .sorted(Comparator.comparing(GardenTools::getWeightInKg).reversed())
     		   .collect(Collectors.toList());
     	}
     	
     	else {
     	    sortedListOfGardenTools = listOfTools.stream()
-    		    .sorted(Comparator.comparing(GardenTools::getWeightInKg).reversed())
+    		    .sorted(Comparator.comparing(GardenTools::getWeightInKg))
     		    .collect(Collectors.toList());
     	}
     	
