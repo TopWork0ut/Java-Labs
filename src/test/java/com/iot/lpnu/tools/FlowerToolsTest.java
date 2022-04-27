@@ -13,16 +13,16 @@ class FlowerToolsTest {
 
     @BeforeEach
     public void setUp(){
-        flowerTool = new FlowerTools("Tool",true,5f,4f, DangerLevel.LOW,true);
+    	flowerTool = new FlowerTools("Tool", true, 5f, 4f, DangerLevel.LOW, true);
     }
     @Test
     public void testConstrucor(){
-        assertEquals("Tool",flowerTool.getNameString());
+        assertEquals("Tool", flowerTool.getNameString());
         assertTrue(flowerTool.isElectric());
-        assertEquals(5f,flowerTool.getCostInUaPerOne());
-        assertEquals(4f,flowerTool.getWeightInKg());
-        assertEquals(DangerLevel.LOW,flowerTool.getDangerLevel());
-        assertEquals(ToolSpecialization.IS_FOR_FLOWERS,flowerTool.getToolSpecialization());
+        assertEquals(5f, flowerTool.getCostInUaPerOne());
+        assertEquals(4f, flowerTool.getWeightInKg());
+        assertEquals(DangerLevel.LOW, flowerTool.getDangerLevel());
+        assertEquals(ToolSpecialization.IS_FOR_FLOWERS, flowerTool.getToolSpecialization());
         flowerTool.setForPoisonousFlowers(false);
         assertFalse(flowerTool.isForPoisonousFlowers());
 

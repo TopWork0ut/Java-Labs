@@ -13,14 +13,15 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-class SortingManagerTest {
+public class SortingManagerTest {
     protected List<GardenTools> listOfTools;
     protected BushTools bushtool1;
     protected BushTools bushtool2;
     protected TreeTools treetool1;
     protected TreeTools treetool2;
     protected TreeTools treetool3;
-
+    
+    protected InstrumentShop instrumentShop;
     protected SortingManager sortingManager;
     @BeforeEach
     public void setUp(){

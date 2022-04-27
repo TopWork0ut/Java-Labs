@@ -14,23 +14,23 @@ class GardenToolsTest {
 
     @BeforeEach
     public void setUp(){
-        flowerTool = new FlowerTools("Tool",true,5f,4f, DangerLevel.LOW,true);
+        flowerTool = new FlowerTools("Tool", true, 5f, 4f, DangerLevel.LOW, true);
         gardenTool = (GardenTools) flowerTool;
     }
     @Test
     public void testConstrucor(){
         gardenTool.setNameString("Tool");
-        assertEquals("Tool",gardenTool.getNameString());
+        assertEquals("Tool", gardenTool.getNameString());
         gardenTool.setElectric(true);
         assertTrue(gardenTool.isElectric());
         gardenTool.setCostInUaPerOne(4f);
-        assertEquals(4f,gardenTool.getCostInUaPerOne());
+        assertEquals(4f, gardenTool.getCostInUaPerOne());
         gardenTool.setWeightInKg(3f);
-        assertEquals(3f,gardenTool.getWeightInKg());
+        assertEquals(3f, gardenTool.getWeightInKg());
         gardenTool.setDangerLevel(DangerLevel.LOW);
-        assertEquals(DangerLevel.LOW,gardenTool.getDangerLevel());
+        assertEquals(DangerLevel.LOW, gardenTool.getDangerLevel());
         gardenTool.setToolSpecialization(ToolSpecialization.IS_FOR_TREES);
-        assertEquals(ToolSpecialization.IS_FOR_TREES,gardenTool.getToolSpecialization());
+        assertEquals(ToolSpecialization.IS_FOR_TREES, gardenTool.getToolSpecialization());
 
     }
     @Test

@@ -13,16 +13,16 @@ class TreeToolsTest {
 
     @BeforeEach
     public void setUp(){
-        treeTool = new TreeTools("Tool",true,5f,4f, DangerLevel.LOW,true);
+        treeTool = new TreeTools("Tool", true, 5f, 4f, DangerLevel.LOW, true);
     }
     @Test
     public void testConstrucor(){
-        assertEquals("Tool",treeTool.getNameString());
+        assertEquals("Tool", treeTool.getNameString());
         assertTrue(treeTool.isElectric());
-        assertEquals(5f,treeTool.getCostInUaPerOne());
-        assertEquals(4f,treeTool.getWeightInKg());
-        assertEquals(DangerLevel.LOW,treeTool.getDangerLevel());
-        assertEquals(ToolSpecialization.IS_FOR_TREES,treeTool.getToolSpecialization());
+        assertEquals(5f, treeTool.getCostInUaPerOne());
+        assertEquals(4f, treeTool.getWeightInKg());
+        assertEquals(DangerLevel.LOW, treeTool.getDangerLevel());
+        assertEquals(ToolSpecialization.IS_FOR_TREES, treeTool.getToolSpecialization());
         treeTool.setProfilacticTool(false);
         assertFalse(treeTool.isProfilacticTool());
 

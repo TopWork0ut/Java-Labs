@@ -16,10 +16,8 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InstrumentShopTest extends SortingManagerTest {
-     protected InstrumentShop instrumentShop;
-
-    protected final PrintStream standardOut = System.out;
-    protected final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @BeforeEach
     public void setUp() {
@@ -39,7 +37,6 @@ class InstrumentShopTest extends SortingManagerTest {
         listOfTools.add(treetool2);
         listOfTools.add(treetool3);
         System.setOut(new PrintStream(outputStreamCaptor));
-
 
     }
 
