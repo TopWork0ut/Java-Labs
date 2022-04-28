@@ -37,7 +37,7 @@ public class Main {
 		instrumentShop.addToolToTheShop(treeTools3);
 
 		ToolsWriter toolWriter = new ToolsWriter();
-		toolWriter.writeToFile(instrumentShop);
+		toolWriter.writeToFile(instrumentShop, "src/test/resourses/result1.csv");
 
 		System.out.println(instrumentShop.sellInstruments(ToolSpecialization.IS_FOR_BUSHES, 9));
 		System.out.println(instrumentShop.calculatePriceForTool(treeTools3, 7));

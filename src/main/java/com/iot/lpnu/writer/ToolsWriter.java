@@ -9,8 +9,8 @@ import com.iot.lpnu.tools.GardenTools;
 public class ToolsWriter {
 	private String previousClassName = "";
 
-	public void writeToFile(InstrumentShop instrumentShop) throws IOException {
-		try (FileWriter writer = new FileWriter("result.csv")) {
+	public void writeToFile(InstrumentShop instrumentShop, String fileSource) throws IOException {
+		try (FileWriter writer = new FileWriter(fileSource /* "src/test/resourses/result.csv" */)) {
 			for (GardenTools tool : instrumentShop.getListOfTools()) {
 				if (!previousClassName.equals(tool.getClass().getSimpleName())) {
 					writer.write(tool.getHeaders());
@@ -25,8 +25,8 @@ public class ToolsWriter {
 
 	}
 
-	protected void addOneToolToFile(GardenTools tool) throws IOException {
-		try (FileWriter writer = new FileWriter("result.csv", true)) {
+	protected void addOneToolToFile(GardenTools tool, String fileSource) throws IOException {
+		try (FileWriter writer = new FileWriter(fileSource/*"src/test/resourses/result.csv"*/, true)) {
 			if (previousClassName != tool.getClass().getSimpleName()) {
 				writer.write(tool.getHeaders());
 				writer.write("\r\n");

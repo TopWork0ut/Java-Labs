@@ -28,8 +28,6 @@ public abstract class GardenTools {
 	}
 
 	public String toCSV() {
-//		DecimalFormat("#").format(this.costInUaPerOne);
-
 		return String.format("%s,%b,%f,%f,%s", this.nameString, this.isElectric, this.costInUaPerOne, this.weightInKg,
 				this.dangerLevel);
 	}

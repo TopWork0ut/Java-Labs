@@ -10,4 +10,3 @@ nameString,isElectric,costInUaPerOne,weightInKg,dangerLevel,isProfilacticTool
 tree1,true,8.000000,1.400000,MEDIUM,true
 tree2,true,9.500000,1.000000,MEDIUM,false
 tree3,false,15.200000,6.000000,LOW,true
-tree4,true,2.100000,9.000000,MEDIUM,true
