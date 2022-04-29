@@ -55,8 +55,8 @@ class InstrumentShopTest extends SortingManagerTest {
 
     @Test
     public void testAddingOfInstrumentsToTheShop() {
-
-        assertEquals(2, instrumentShop.addToolToTheShop(bushtool2).size());
+    	instrumentShop.addToolToTheShop(bushtool2);
+        assertEquals(2, instrumentShop.listOfTools.size());
     }
 
     @Test
@@ -72,22 +72,24 @@ class InstrumentShopTest extends SortingManagerTest {
 
     @Test
     public void testRemovingTheInstruments() {
+    	int arrayOfDesarableToolsToBeRemoved[] = {0,1,2,1,-10};
+    	int arrayOfExpectedSizesOfListWithNotRemovedTools[] = {1,0,1,1,1};
 
+    	instrumentShop.removeToolFromShop(ToolSpecialization.IS_FOR_BUSHES, 0);
+    	assertEquals("We haven't deleted any of the tools", outputStreamCaptor.toString().trim());
+    	
+        for(int i = 0; i < arrayOfDesarableToolsToBeRemoved.length; i++) {
+        	if(i == 2) {
+        		instrumentShop.addToolToTheShop(bushtool1);
+        	}
+        	else if(i == 3) {
+        		instrumentShop.addToolToTheShop(bushtool2);
+			}
+        	assertEquals(arrayOfExpectedSizesOfListWithNotRemovedTools[i], 
+        		  instrumentShop.removeToolFromShop(ToolSpecialization.IS_FOR_BUSHES, 
+        				  arrayOfDesarableToolsToBeRemoved[i]).size());
 
-        instrumentShop.removeToolFromShop(ToolSpecialization.IS_FOR_BUSHES, 0);
-        assertEquals("We haven't deleted any of the tools", outputStreamCaptor.toString().trim());
-
-        assertEquals(1, instrumentShop.removeToolFromShop(ToolSpecialization.IS_FOR_BUSHES, 0).size());
-        assertEquals(0, instrumentShop.removeToolFromShop(ToolSpecialization.IS_FOR_BUSHES, 1).size());
-
-        instrumentShop.addToolToTheShop(bushtool1);
-        assertEquals(1, instrumentShop.removeToolFromShop(ToolSpecialization.IS_FOR_BUSHES, 2).size());
-
-        instrumentShop.addToolToTheShop(bushtool2);
-
-        assertEquals(1, instrumentShop.removeToolFromShop(ToolSpecialization.IS_FOR_BUSHES, 1).size());
-        assertEquals(1, instrumentShop.removeToolFromShop(ToolSpecialization.IS_FOR_BUSHES, -10).size());
-
+        }
     }
 
     @Test
