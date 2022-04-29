@@ -12,10 +12,8 @@ import com.iot.lpnu.enums.ToolSpecialization;
 public class InstrumentShop extends SortingManager {
 	protected List<GardenTools> listOfTools = new ArrayList<>();
 
-	public List<GardenTools> addToolToTheShop(GardenTools tool) {
+	public void addToolToTheShop(GardenTools tool) {
 		listOfTools.add(tool);
-
-		return listOfTools;
 	}
 
 	public List<GardenTools> sellInstruments(ToolSpecialization toolSpecialization, int count) {
