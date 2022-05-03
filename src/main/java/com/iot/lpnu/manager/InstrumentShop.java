@@ -10,12 +10,10 @@ import com.iot.lpnu.enums.OrderOfSOrting;
 import com.iot.lpnu.enums.ToolSpecialization;
 
 public class InstrumentShop extends SortingManager {
-	private List<GardenTools> listOfTools = new ArrayList<>();
+	protected List<GardenTools> listOfTools = new ArrayList<>();
 
-	public List<GardenTools> addToolToTheShop(GardenTools tool) {
+	public void addToolToTheShop(GardenTools tool) {
 		listOfTools.add(tool);
-
-		return listOfTools;
 	}
 
 	public List<GardenTools> sellInstruments(ToolSpecialization toolSpecialization, int count) {
@@ -29,21 +27,17 @@ public class InstrumentShop extends SortingManager {
 				System.out.format("You've bougth %d instruments", count);
 				System.out.println();
 				removeToolFromShop(toolSpecialization, count);
-			}
-
-			else if (countOfDesireableToolsInShop > 0 && countOfDesireableToolsInShop < count) {
+			} else if (countOfDesireableToolsInShop > 0 && countOfDesireableToolsInShop < count) {
 				System.out.format("Sorry, we have only %d tools, so we'll sell you only them",
 						countOfDesireableToolsInShop);
 				System.out.println();
 				removeToolFromShop(toolSpecialization, countOfDesireableToolsInShop);
-			}
-
-			else {
-				System.out.println("Sorry, we don't have any of these type of instruments, you can choose smth else");
-			}
-		}
-
-		else {
+			} /*
+				 * else { System.out.
+				 * println("Sorry, we don't have any of these type of instruments, you can choose smth else"
+				 * ); }
+				 */
+		} else {
 			System.out.println("You've put unpropriate number to sell tools");
 		}
 		;
@@ -62,26 +56,18 @@ public class InstrumentShop extends SortingManager {
 
 		if (count < 0) {
 			System.out.println("We've put the negative number of tools to delete");
-		}
-
-		else if (count == 0) {
+		} else if (count == 0) {
 			System.out.println("We haven't deleted any of the tools");
-		}
-
-		else {
+		} else {
 			if (listWithToolsFromThisSpecialization.size() == count) {
 				System.out.format("We've deleted %d tools from the shop", count);
 				System.out.println();
 				listOfTools.removeAll(listWithToolsFromThisSpecialization);
-			}
-
-			else if (listWithToolsFromThisSpecialization.size() < count) {
+			} else if (listWithToolsFromThisSpecialization.size() < count) {
 				System.out.format("We've deleted only %d tools from the shop, cause list doesn't consist more",
 						listWithToolsFromThisSpecialization.size());
 				System.out.println();
-			}
-
-			else {
+			} else {
 				listWithToolsFromThisSpecialization.stream().forEach(tool -> {
 					if (secondList.size() != count) {
 						secondList.remove(tool);
@@ -98,24 +84,28 @@ public class InstrumentShop extends SortingManager {
 	public float calculatePriceForTool(GardenTools tool, int numberOfTools) {
 		if (numberOfTools > 0) {
 			return tool.getCostInUaPerOne() * numberOfTools;
-		}
-		else {
+		} else {
 			return 0;
-		}		
+		}
 	}
 
 	public List<GardenTools> getListOfToolsForProfilacticWorksWithTrees(OrderOfSOrting order) {
 		List<GardenTools> listOfToolsForProfilacticTrees = listOfTools.stream()
-				.filter(tool -> (tool.getToolSpecialization().equals(ToolSpecialization.IS_FOR_TREES) && ((TreeTools)tool).isProfilacticTool() == true))
+				.filter(tool -> (tool.getToolSpecialization().equals(ToolSpecialization.IS_FOR_TREES)
+						&& ((TreeTools) tool).isProfilacticTool() == true))
 				.collect(Collectors.toList());
 		System.out.println("Tree tools sorted by price");
 		System.out.println(getToolsSortedByPrice(listOfToolsForProfilacticTrees, order));
-		
+
 		System.out.println(getToolsSortedByWeight(listOfToolsForProfilacticTrees, order));
 //		getToolsSortedByPrice(listOfToolsForProfilacticTrees, order);
 //		getToolsSortedByWeight(listOfToolsForProfilacticTrees, order);
 
 		return listOfToolsForProfilacticTrees;
+	}
+
+	public List<GardenTools> getListOfTools() {
+		return listOfTools;
 	}
 
 }

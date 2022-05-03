@@ -11,6 +11,7 @@ public abstract class GardenTools {
 	protected DangerLevel dangerLevel;
 	protected ToolSpecialization toolSpecialization;
 
+//	private DecimalFormat decimalFormat = new DecimalFormat("#.#");
 	public GardenTools(String nameString, boolean isElectric, Float costInUaPerOne, Float weightInKg,
 			DangerLevel dangerLevel) {
 		super();
@@ -20,6 +21,15 @@ public abstract class GardenTools {
 		this.weightInKg = weightInKg;
 		this.dangerLevel = dangerLevel;
 
+	}
+
+	public String getHeaders() {
+		return "nameString,isElectric,costInUaPerOne,weightInKg,dangerLevel";
+	}
+
+	public String toCSV() {
+		return String.format("%s,%b,%f,%f,%s", this.nameString, this.isElectric, this.costInUaPerOne, this.weightInKg,
+				this.dangerLevel);
 	}
 
 	public String getNameString() {
