@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class FlowerToolsTest {
     private FlowerTools flowerTool;
 
-
     @BeforeEach
     public void setUp(){
     	flowerTool = new FlowerTools("Tool", true, 5f, 4f, DangerLevel.LOW, true);
@@ -25,7 +24,6 @@ class FlowerToolsTest {
         assertEquals(ToolSpecialization.IS_FOR_FLOWERS, flowerTool.getToolSpecialization());
         flowerTool.setForPoisonousFlowers(false);
         assertFalse(flowerTool.isForPoisonousFlowers());
-
     }
 
     @Test

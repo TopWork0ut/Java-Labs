@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GardenToolsTest {
-
     private GardenTools gardenTool;
     private  FlowerTools flowerTool;
 
@@ -17,6 +16,7 @@ class GardenToolsTest {
         flowerTool = new FlowerTools("Tool", true, 5f, 4f, DangerLevel.LOW, true);
         gardenTool = (GardenTools) flowerTool;
     }
+    
     @Test
     public void testConstrucor(){
         gardenTool.setNameString("Tool");

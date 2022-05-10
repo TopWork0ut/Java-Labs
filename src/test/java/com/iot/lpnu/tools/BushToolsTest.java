@@ -15,7 +15,6 @@ class BushToolsTest {
     @BeforeEach
     public void setUp() {
         bushTool = new BushTools("Tool", true, 5f, 4f, DangerLevel.LOW, true);
-
     }
 
     @Test
@@ -28,7 +27,6 @@ class BushToolsTest {
         assertEquals(ToolSpecialization.IS_FOR_BUSHES, bushTool.getToolSpecialization());
         bushTool.setForBushesWithThornes(false);
         assertFalse(bushTool.isForBushesWithThornes());
-
     }
 
     @Test

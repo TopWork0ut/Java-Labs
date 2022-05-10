@@ -40,8 +40,6 @@ public class InstrumentShop extends SortingManager {
 		} else {
 			System.out.println("You've put unpropriate number to sell tools");
 		}
-		;
-
 		return listOfTools;
 	}
 
@@ -100,7 +98,6 @@ public class InstrumentShop extends SortingManager {
 		System.out.println(getToolsSortedByWeight(listOfToolsForProfilacticTrees, order));
 //		getToolsSortedByPrice(listOfToolsForProfilacticTrees, order);
 //		getToolsSortedByWeight(listOfToolsForProfilacticTrees, order);
-
 		return listOfToolsForProfilacticTrees;
 	}
 

@@ -90,7 +90,6 @@ class ToolsWriterTest extends ToolsWriter/* extends SortingManagerTest */ {
 
         assertTrue(FileUtils.contentEquals(expectedFile2, resultFile2));
 		
-
         File resultFile1 = new File("src/test/resourses/result1.csv");
 //		check if it is also not equal extepcted file1 where is a lot of lines
         assertFalse(FileUtils.contentEquals(expectedFile2, resultFile1));
@@ -112,7 +111,6 @@ class ToolsWriterTest extends ToolsWriter/* extends SortingManagerTest */ {
         File expectedFile3 = new File("src/test/resourses/expected3.csv");
         File resultFile3 = new File("src/test/resourses/result3.csv");
         assertTrue(FileUtils.contentEquals(expectedFile3, resultFile3));
-
     }
 
 }

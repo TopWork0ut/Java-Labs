@@ -20,9 +20,7 @@ public class ToolsWriter {
                 writer.write(tool.toCSV());
                 writer.write("\r\n");
             }
-
         }
-
     }
 
     protected void addOneToolToFile(GardenTools tool, String fileSource) throws IOException {
