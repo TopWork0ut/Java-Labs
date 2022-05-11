@@ -21,7 +21,6 @@ class InstrumentShopTest extends SortingManagerTest {
 
     @BeforeEach
     public void setUp() {
-
         bushtool1 = new BushTools("bush1", true, 7.2f, 1f, DangerLevel.LOW, true);
         bushtool2 = new BushTools("bush2", true, 7.4f, 2f, DangerLevel.MEDIUM, false);
         treetool1 = new TreeTools("tree1", false, 2.1f, 2.2f, DangerLevel.LOW, true);
@@ -37,7 +36,6 @@ class InstrumentShopTest extends SortingManagerTest {
         listOfTools.add(treetool2);
         listOfTools.add(treetool3);
         System.setOut(new PrintStream(outputStreamCaptor));
-
     }
 
     @AfterEach
@@ -61,13 +59,11 @@ class InstrumentShopTest extends SortingManagerTest {
 
     @Test
     public void testSellingTheInstruments() {
-
         assertEquals(0, instrumentShop.sellInstruments(ToolSpecialization.IS_FOR_BUSHES, 1).size());
         assertEquals(0, instrumentShop.sellInstruments(ToolSpecialization.IS_FOR_BUSHES, -1).size());
         instrumentShop.addToolToTheShop(bushtool1);
         instrumentShop.addToolToTheShop(bushtool2);
         assertEquals(0, instrumentShop.sellInstruments(ToolSpecialization.IS_FOR_BUSHES, 3).size());
-
     }
 
     @Test
@@ -88,7 +84,6 @@ class InstrumentShopTest extends SortingManagerTest {
         	assertEquals(arrayOfExpectedSizesOfListWithNotRemovedTools[i], 
         		  instrumentShop.removeToolFromShop(ToolSpecialization.IS_FOR_BUSHES, 
         				  arrayOfDesarableToolsToBeRemoved[i]).size());
-
         }
     }
 
@@ -100,6 +95,5 @@ class InstrumentShopTest extends SortingManagerTest {
         assertEquals(1, instrumentShop.getListOfToolsForProfilacticWorksWithTrees(OrderOfSOrting.DESCENDING).size());
         instrumentShop.addToolToTheShop(treetool3);
         assertEquals(2, instrumentShop.getListOfToolsForProfilacticWorksWithTrees(OrderOfSOrting.DESCENDING).size());
-
     }
 }

@@ -11,6 +11,7 @@ import com.iot.lpnu.enums.DangerLevel;
 import com.iot.lpnu.enums.OrderOfSOrting;
 import com.iot.lpnu.enums.ToolSpecialization;
 import com.iot.lpnu.manager.*;
+import com.iot.lpnu.regex.FileFinder;
 
 public class Main {
 
@@ -42,6 +43,8 @@ public class Main {
 		System.out.println(instrumentShop.sellInstruments(ToolSpecialization.IS_FOR_BUSHES, 9));
 		System.out.println(instrumentShop.calculatePriceForTool(treeTools3, 7));
 		System.out.println(instrumentShop.getListOfToolsForProfilacticWorksWithTrees(OrderOfSOrting.ASCENDING));
-
+		
+		FileFinder fileFinder = new FileFinder();
+		System.out.println(fileFinder.findAndPrintIdentifiedFilesInText());		
 	}
 }

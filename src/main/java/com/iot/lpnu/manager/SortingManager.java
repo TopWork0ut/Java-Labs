@@ -20,9 +20,7 @@ public class SortingManager {
 			sortedListOfGardenTools = listOfTools.stream().sorted(Comparator.comparing(GardenTools::getCostInUaPerOne))
 					.collect(Collectors.toList());
 		}
-
 		return sortedListOfGardenTools;
-
 	}
 
 	protected List<GardenTools> getToolsSortedByWeight(List<GardenTools> listOfTools, OrderOfSOrting order) {
@@ -31,12 +29,10 @@ public class SortingManager {
 			sortedListOfGardenTools = listOfTools.stream()
 					.sorted(Comparator.comparing(GardenTools::getWeightInKg).reversed()).collect(Collectors.toList());
 		}
-
 		else {
 			sortedListOfGardenTools = listOfTools.stream().sorted(Comparator.comparing(GardenTools::getWeightInKg))
 					.collect(Collectors.toList());
 		}
-
 		return sortedListOfGardenTools;
 	}
 

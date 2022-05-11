@@ -10,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class TreeToolsTest {
     private TreeTools treeTool;
 
-
     @BeforeEach
     public void setUp(){
         treeTool = new TreeTools("Tool", true, 5f, 4f, DangerLevel.LOW, true);
     }
+    
     @Test
     public void testConstrucor(){
         assertEquals("Tool", treeTool.getNameString());
@@ -25,7 +25,6 @@ class TreeToolsTest {
         assertEquals(ToolSpecialization.IS_FOR_TREES, treeTool.getToolSpecialization());
         treeTool.setProfilacticTool(false);
         assertFalse(treeTool.isProfilacticTool());
-
     }
 
     @Test
