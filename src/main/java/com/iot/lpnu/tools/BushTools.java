@@ -11,7 +11,6 @@ public class BushTools extends GardenTools {
 		super(nameString, isElectric, costInUaPerOne, weightInKg, dangerLevel);
 		this.isForBushesWithThornes = isForBushesWithThornes;
 		super.toolSpecialization = ToolSpecialization.IS_FOR_BUSHES;
-
 	}
 
 	@Override
