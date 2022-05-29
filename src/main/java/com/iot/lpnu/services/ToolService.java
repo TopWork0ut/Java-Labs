@@ -1,6 +1,8 @@
 package com.iot.lpnu.services;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,24 +26,24 @@ public class ToolService {
         return list;
     }
     
-    public List<TreeTools> findAll() {       
-        return repository.findAll();
+    public Map<Integer, TreeTools> findAll() {       
+        return repository.findAll().stream().collect(Collectors.toMap(TreeTools::getId, tool -> tool));
     }
 
-    public List<TreeTools> findByName(String string) {
-        return repository.findByNameString(string);
+    public Map<String,TreeTools> findByName(String string) {
+        return repository.findByNameStringMap(string);
     }
     
-    public TreeTools findById(int id) {
-        return repository.findById(id);
+    public Map<Integer,TreeTools> findById(int id) {
+        return repository.findByIdMap(id);
     }
     
-    public List<TreeTools> findByCostInUaPerOne(Float costInUaPerOne) {
-        return repository.findByCostInUaPerOne(costInUaPerOne);
+    public Map<Float,TreeTools> findByCostInUaPerOne(Float costInUaPerOne) {
+        return repository.findByCostInUaPerOneMap(costInUaPerOne);
     }
     
     public TreeTools update(Integer id, TreeTools treeTools) {
-        TreeTools treeTools2 = findById(id);
+        TreeTools treeTools2 = repository.findById(id).get();
         treeTools2.setCostInUaPerOne(treeTools.getCostInUaPerOne());
         treeTools2.setDangerLevel(treeTools.getDangerLevel());
         treeTools2.setId(id);
