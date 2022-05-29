@@ -13,6 +13,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 //import org.springframework.web.bind.annotation.DeleteMapping;
 //import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PathVariable;
@@ -27,8 +28,6 @@ import com.iot.lpnu.tools.TreeTools;
 
 @RestController
 @Path("/tool")
-@Consumes("application/json")
-@Produces("application/json")
 public class ToolController {
     @Autowired
     private ToolService toolService;
@@ -38,8 +37,14 @@ public class ToolController {
     @Consumes("application/json")
     @Produces("application/json")
 //    @GetMapping("/tool/")
-    public List<TreeTools> getAllTool() {
-        return toolService.findAll();
+    public ResponseEntity<Object> getAllTool() {
+        if(toolService.findAll().isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        
+        else {
+            return ResponseEntity.ok(toolService.findAll());
+        }
     }
     
     @GET
@@ -47,27 +52,60 @@ public class ToolController {
     @Consumes("application/json")
     @Produces("application/json")
 //  @GetMapping("/tool/getbyname/{nameString}")
-    public List<TreeTools> searchByName(@PathParam("nameString") String nameString){
-        return toolService.findByName(nameString);
-    }
+    public ResponseEntity<Object> searchByName(@PathParam("nameString") String nameString) {
+        try {
+            if(toolService.findByName(nameString).isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+            
+            else {
+                return ResponseEntity.ok(toolService.findByName(nameString));
+            }
+            
+         } catch (NullPointerException e) {
+             return ResponseEntity.noContent().build();
+         }
+     }
     
     @GET
     @Path("/getbyid/{id}")
     @Consumes("application/json")
     @Produces("application/json")
 //  @GetMapping("/tool/getbyid/{id}")
-    public TreeTools searchById(@PathParam("id") int id){
-        return toolService.findById(id);
+    public ResponseEntity<Object> searchById(@PathParam("id") int id) {
+       try {
+           if(toolService.findById(id).isEmpty()) {
+               return ResponseEntity.noContent().build();
+           }
+           
+           else {
+               return ResponseEntity.ok(toolService.findById(id));
+           }
+           
+        } catch (NullPointerException e) {
+            return ResponseEntity.noContent().build();
+        }
     }
-    
+
     @GET
     @Path("/getbycost/{costInUaPerOne}")
     @Consumes("application/json")
     @Produces("application/json")
 //    @GetMapping("/tool/getbycost/{costInUaPerOne}")
-    public List<TreeTools> searchByCost(@PathParam("costInUaPerOne") Float costInUaPerOne/* @PathVariable Float costInUaPerOne */){
-        return toolService.findByCostInUaPerOne(costInUaPerOne);
-    }
+    public ResponseEntity<Object> searchByCost(@PathParam("costInUaPerOne") Float costInUaPerOne) {
+        try {
+            if(toolService.findByCostInUaPerOne(costInUaPerOne).isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+            
+            else {
+                return ResponseEntity.ok(toolService.findByCostInUaPerOne(costInUaPerOne));
+            }
+            
+         } catch (NullPointerException e) {
+             return ResponseEntity.noContent().build();
+         }
+     }
 
     @POST
     @Path("/add")
@@ -91,17 +129,42 @@ public class ToolController {
     @Path("/update/{id}")
     @Consumes("application/json")
     @Produces("application/json")
-//    @PutMapping("/tool/update/{id}")
-    public TreeTools addListOfTools(@PathParam("id") Integer id, @RequestBody TreeTools treeTools){
-        return toolService.update(id, treeTools);
-    }
+    public ResponseEntity<Object> updateTool(@PathParam("id") Integer id, @RequestBody TreeTools treeTools) {
+        try {
+            if(toolService.findById(id).isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+            
+            else {
+                return ResponseEntity.ok(toolService.update(id, treeTools));
+            }
+            
+         } catch (NullPointerException e) {
+             return ResponseEntity.noContent().build();
+         }
+     }
     
     @DELETE
     @Path("/delete/{id}")
     @Consumes("application/json")
     @Produces("application/json")
 //    @DeleteMapping("tool/delete/{id}")
-    public void delete(@PathParam("id") int id) {
-        toolService.delete(id);
-    }
+    public ResponseEntity<Object> delete(@PathParam("id") int id) {
+//        HttpStatus httpStatus;
+        try {
+            if(toolService.findById(id).isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+            
+            else {
+//                toolService.delete(id);
+//                httpStatus = HttpStatus.OK;
+//                return ResponseEntity.status(httpStatus).build();
+                return (ResponseEntity<Object>) ResponseEntity.ok();
+            }
+            
+         } catch (NullPointerException e) {
+             return ResponseEntity.noContent().build();
+         }
+     }
 }
