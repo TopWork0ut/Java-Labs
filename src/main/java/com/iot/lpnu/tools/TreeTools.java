@@ -1,19 +1,53 @@
 package com.iot.lpnu.tools;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import com.iot.lpnu.enums.DangerLevel;
 import com.iot.lpnu.enums.ToolSpecialization;
 
-public class TreeTools extends GardenTools {
-	public boolean isProfilacticTool;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
+@Table(name = "Caption")
+public class TreeTools extends GardenTools {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private Integer id;
+    
+   
+    @Column(name = "isProfilacticTool", nullable = false, columnDefinition = "TINYINT(1)")
+	private Boolean isProfilacticTool;
+    
+	public TreeTools() {
+	    this("Default",true,4.1f,1f,DangerLevel.LOW,true);
+	    
+	}
 	public TreeTools(String nameString, boolean isElectric, Float costInUaPerOne, Float weightInKg,
-			DangerLevel dangerLevel, boolean isProfilacticTool) {
+			DangerLevel dangerLevel, Boolean isProfilacticTool) {
 		super(nameString, isElectric, costInUaPerOne, weightInKg, dangerLevel);
 		this.isProfilacticTool = isProfilacticTool;
 		super.toolSpecialization = ToolSpecialization.IS_FOR_TREES;
 	}
+	
+	public Integer getId() {
+        return id;
+    }
 
-	@Override
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Override
 	public String getHeaders() {
 		return super.getHeaders() + ",isProfilacticTool";
 	}
@@ -23,11 +57,11 @@ public class TreeTools extends GardenTools {
 		return super.toCSV() + "," + this.isProfilacticTool;
 	}
 
-	public boolean isProfilacticTool() {
+	public Boolean isProfilacticTool() {
 		return isProfilacticTool;
 	}
 
-	public void setProfilacticTool(boolean isProfilacticTool) {
+	public void setProfilacticTool(Boolean isProfilacticTool) {
 		this.isProfilacticTool = isProfilacticTool;
 	}
 

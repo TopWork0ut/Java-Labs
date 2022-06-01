@@ -1,18 +1,44 @@
 package com.iot.lpnu.tools;
 
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.iot.lpnu.enums.DangerLevel;
 import com.iot.lpnu.enums.ToolSpecialization;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@MappedSuperclass
 public abstract class GardenTools {
 	private String nameString;
-	private boolean isElectric;
+	
+	@Column(nullable = false, columnDefinition = "TINYINT(1)")
+	private Boolean isElectric;
 	private Float costInUaPerOne;
 	private Float weightInKg;
+
+    @Enumerated(EnumType.STRING)
 	protected DangerLevel dangerLevel;
+    
+//    @Column(columnDefinition = "toolSpecialization('IS_FOR_BUSHES', 'IS_FOR_FLOWERS', ' IS_FOR_TREES')")
+//    @Enumerated(EnumType.ORDINAL)
+    @Transient
 	protected ToolSpecialization toolSpecialization;
 
-//	private DecimalFormat decimalFormat = new DecimalFormat("#.#");
-	public GardenTools(String nameString, boolean isElectric, Float costInUaPerOne, Float weightInKg,
+
+	public GardenTools(String nameString, Boolean isElectric, Float costInUaPerOne, Float weightInKg,
 			DangerLevel dangerLevel) {
 		super();
 		this.nameString = nameString;
@@ -23,6 +49,7 @@ public abstract class GardenTools {
 
 	}
 
+	@JsonIgnore
 	public String getHeaders() {
 		return "nameString,isElectric,costInUaPerOne,weightInKg,dangerLevel";
 	}
@@ -40,11 +67,11 @@ public abstract class GardenTools {
 		this.nameString = nameString;
 	}
 
-	public boolean isElectric() {
+	public Boolean isElectric() {
 		return isElectric;
 	}
 
-	public void setElectric(boolean isElectric) {
+	public void setElectric(Boolean isElectric) {
 		this.isElectric = isElectric;
 	}
 
@@ -71,7 +98,8 @@ public abstract class GardenTools {
 	public void setDangerLevel(DangerLevel dangerLevel) {
 		this.dangerLevel = dangerLevel;
 	}
-
+	
+	@JsonIgnore
 	public ToolSpecialization getToolSpecialization() {
 		return toolSpecialization;
 	}

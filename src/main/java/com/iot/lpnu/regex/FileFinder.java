@@ -1,9 +1,7 @@
 package com.iot.lpnu.regex;
 
 import java.util.regex.Pattern;
-
-import edu.emory.mathcs.backport.java.util.LinkedList;
-
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -41,5 +39,6 @@ public class FileFinder {
             list.add(matcher.group());
         }
         return list;
+        
     }
 }
